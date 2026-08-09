@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Global Impact Tracker</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #173b57;
+      color: white;
+      padding: 25px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: white;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav button {
+      border: none;
+      background: transparent;
+      padding: 10px 16px;
+      margin: 3px;
+      cursor: pointer;
+      font-size: 15px;
+      border-radius: 8px;
+    }
+
+    nav button:hover {
+      background: #e8f1f8;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 25px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #365b73;
+    }
+
+    .number {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .section {
+      background: white;
+      margin-bottom: 25px;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .section h2 {
+      margin-bottom: 15px;
+      color: #173b57;
+    }
+
+    .chart {
+      width: 100%;
+      height: 260px;
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      padding: 20px 10px;
+      border-left: 2px solid #777;
+      border-bottom: 2px solid #777;
+      margin-top: 20px;
+    }
+
+    .bar {
+      flex: 1;
+      background: #4d89a8;
+      border-radius: 6px 6px 0 0;
+      position: relative;
+      min-width: 20px;
+    }
+
+    .bar span {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .help {
+      padding: 18px;
+      background: #eef6fa;
+      border-radius: 12px;
+    }
+
+    .help h3 {
+      margin-bottom: 8px;
+    }
+
+    .news {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .news:last-child {
+      border-bottom: none;
+    }
+
+    .news h3 {
+      margin-bottom: 5px;
+    }
+
+    .news small {
+      color: #777;
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #bbb;
+      margin-top: 8px;
+    }
+
+    footer {
+      background: #173b57;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 25px;
+      }
+
+      main {
+        padding: 15px;
+      }
+
+      .section {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌍 Global Impact Tracker</h1>
+  <p>Tracking poverty, unemployment, resources and opportunities to help</p>
+</header>
+
+<nav>
+  <button onclick="scrollToSection('dashboard')">Dashboard</button>
+  <button onclick="scrollToSection('poverty')">Poverty</button>
+  <button onclick="scrollToSection('unemployment')">Unemployment</button>
+  <button onclick="scrollToSection('help')">How We Can Help</button>
+  <button onclick="scrollToSection('news')">News</button>
+</nav>
+
+<main>
+
+  <section id="dashboard" class="dashboard">
+
+    <div class="card">
+      <h3>🌎 Poverty</h3>
+      <div class="number">Global Data</div>
+      <p>People affected by poverty</p>
+    </div>
+
+    <div class="card">
+      <h3>👷 Unemployment</h3>
+      <div class="number">Global Data</div>
+      <p>People looking for work</p>
+    </div>
+
+    <div class="card">
+      <h3>📊 Tracking</h3>
+      <div class="number">Live Project</div>
+      <p>Data will be connected later</p>
+    </div>
+
+    <div class="card">
+      <h3>🤝 Action</h3>
+      <div class="number">Ways to Help</div>
+      <p>Explore practical solutions</p>
+    </div>
+
+  </section>
+
+  <section id="poverty" class="section">
+
+    <h2>📈 Poverty Tracker</h2>
+
+    <p>
+      Select a country to explore poverty data.
+    </p>
+
+    <select id="countrySelect">
+      <option>Global</option>
+      <option>India</option>
+      <option>United States</option>
+      <option>Brazil</option>
+      <option>Nigeria</option>
+      <option>United Kingdom</option>
+    </select>
+
+    <div class="chart">
+
+      <div class="bar" style="height: 75%;">
+        <span>2000</span>
+      </div>
+
+      <div class="bar" style="height: 68%;">
+        <span>2005</span>
+      </div>
+
+      <div class="bar" style="height: 61%;">
+        <span>2010</span>
+      </div>
+
+      <div class="bar" style="height: 55%;">
+        <span>2015</span>
+      </div>
+
+      <div class="bar" style="height: 48%;">
+        <span>2020</span>
+      </div>
+
+      <div class="bar" style="height: 42%;">
+        <span>2025</span>
+      </div>
+
+    </div>
+
+    <p style="margin-top: 45px;">
+      ⚠️ The graph above is currently a demonstration.
+      We will replace it with real data from reliable international sources.
+    </p>
+
+  </section>
+
+  <section id="unemployment" class="section">
+
+    <h2>👷 Unemployment Tracker</h2>
+
+    <p>
+      Track unemployment and compare changes between countries and years.
+    </p>
+
+    <div class="chart">
+
+      <div class="bar" style="height: 60%;">
+        <span>2000</span>
+      </div>
+
+      <div class="bar" style="height: 55%;">
+        <span>2005</span>
+      </div>
+
+      <div class="bar" style="height: 50%;">
+        <span>2010</span>
+      </div>
+
+      <div class="bar" style="height: 57%;">
+        <span>2015</span>
+      </div>
+
+      <div class="bar" style="height: 65%;">
+        <span>2020</span>
+      </div>
+
+      <div class="bar" style="height: 52%;">
+        <span>2025</span>
+      </div>
+
+    </div>
+
+    <p style="margin-top: 45px;">
+      ⚠️ This is demonstration data for now.
+    </p>
+
+  </section>
+
+  <section id="help" class="section">
+
+    <h2>🤝 How Can We Help?</h2>
+
+    <p>
+      Poverty is connected to many factors. Here are areas where
+      communities and organizations can make a difference.
+    </p>
+
+    <div class="help-grid">
+
+      <div class="help">
+        <h3>📚 Education</h3>
+        <p>
+          Support access to quality education, books, digital tools
+          and learning opportunities.
+        </p>
+      </div>
+
+      <div class="help">
+        <h3>💼 Job Skills</h3>
+        <p>
+          Support training programs that help people develop useful
+          skills and find employment.
+        </p>
+      </div>
+
+      <div class="help">
+        <h3>🏥 Healthcare</h3>
+        <p>
+          Better access to healthcare can help families avoid
+          financial hardship caused by illness.
+        </p>
+      </div>
+
+      <div class="help">
+        <h3>🍎 Basic Resources</h3>
+        <p>
+          Communities can support access to food, clean water,
+          sanitation and other essential resources.
+        </p>
+      </div>
+
+      <div class="help">
+        <h3>🏗️ Infrastructure</h3>
+        <p>
+          Roads, electricity, internet access and other infrastructure
+          can create opportunities for communities.
+        </p>
+      </div>
+
+      <div class="help">
+        <h3>🌱 Sustainable Development</h3>
+        <p>
+          Supporting sustainable projects can help communities build
+          long-term economic opportunities.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="news" class="section">
+
+    <h2>📰 Poverty & Employment News</h2>
+
+    <div class="news">
+      <h3>Global Poverty Updates</h3>
+      <p>
+        News from international organizations about poverty,
+        development and living conditions.
+      </p>
+      <small>News feed coming soon</small>
+    </div>
+
+    <div class="news">
+      <h3>Employment Around the World</h3>
+      <p>
+        Updates about employment, unemployment and job opportunities.
+      </p>
+      <small>News feed coming soon</small>
+    </div>
+
+    <div class="news">
+      <h3>Development & Resources</h3>
+      <p>
+        Stories about programs working to improve access to resources.
+      </p>
+      <small>News feed coming soon</small>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>🌍 Global Impact Tracker</p>
+  <p>Built to understand global challenges and encourage positive action.</p>
+</footer>
+
+<script>
+
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+</script>
+
+</body>
+</html>
