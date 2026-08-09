@@ -11,53 +11,62 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      background: #f4f7fb;
+      background: #f3f7fa;
       color: #172033;
     }
 
     header {
-      background: #173b57;
+      background: linear-gradient(135deg, #123c56, #16756b);
       color: white;
-      padding: 25px;
       text-align: center;
+      padding: 30px 20px;
+    }
+
+    .logo {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 5px;
+      margin-bottom: 12px;
     }
 
     header h1 {
-      font-size: 32px;
+      font-size: 34px;
       margin-bottom: 8px;
     }
 
     header p {
       font-size: 16px;
-      opacity: 0.9;
     }
 
     nav {
       background: white;
       padding: 12px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
     nav button {
       border: none;
       background: transparent;
-      padding: 10px 16px;
+      padding: 10px 14px;
       margin: 3px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 15px;
-      border-radius: 8px;
     }
 
     nav button:hover {
-      background: #e8f1f8;
+      background: #e5f1f4;
     }
 
     main {
@@ -66,131 +75,253 @@
       padding: 25px;
     }
 
+    .status {
+      background: #fff8df;
+      border-left: 5px solid #e1b400;
+      padding: 14px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
     .dashboard {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 18px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .card {
       background: white;
       padding: 22px;
       border-radius: 15px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
     .card h3 {
+      color: #356077;
       margin-bottom: 12px;
-      color: #365b73;
     }
 
-    .number {
-      font-size: 28px;
+    .big-number {
+      font-size: 30px;
       font-weight: bold;
+      color: #123c56;
+      margin-bottom: 6px;
     }
 
     .section {
       background: white;
-      margin-bottom: 25px;
       padding: 25px;
+      margin-bottom: 25px;
       border-radius: 15px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
     .section h2 {
-      margin-bottom: 15px;
-      color: #173b57;
+      color: #123c56;
+      margin-bottom: 12px;
     }
 
-    .chart {
-      width: 100%;
-      height: 260px;
+    .controls {
       display: flex;
-      align-items: flex-end;
-      gap: 12px;
-      padding: 20px 10px;
-      border-left: 2px solid #777;
-      border-bottom: 2px solid #777;
-      margin-top: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0;
     }
 
-    .bar {
-      flex: 1;
-      background: #4d89a8;
-      border-radius: 6px 6px 0 0;
+    select,
+    input {
+      padding: 11px;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      background: white;
+      font-size: 15px;
+    }
+
+    button.action {
+      padding: 11px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #16756b;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button.action:hover {
+      background: #105c54;
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 360px;
       position: relative;
-      min-width: 20px;
+      overflow-x: auto;
     }
 
-    .bar span {
-      position: absolute;
-      bottom: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .data-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 18px;
+    }
+
+    .data-box {
+      background: #eef6f8;
+      padding: 16px;
+      border-radius: 10px;
+    }
+
+    .data-box strong {
+      display: block;
+      font-size: 23px;
+      color: #123c56;
+      margin-top: 5px;
+    }
+
+    .trend-up {
+      color: #b3261e;
+      font-weight: bold;
+    }
+
+    .trend-down {
+      color: #188038;
+      font-weight: bold;
+    }
+
+    .trend-same {
+      color: #777;
+      font-weight: bold;
     }
 
     .help-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 15px;
-      margin-top: 15px;
+      margin-top: 18px;
     }
 
     .help {
-      padding: 18px;
-      background: #eef6fa;
+      background: #edf7f4;
+      padding: 20px;
       border-radius: 12px;
     }
 
     .help h3 {
       margin-bottom: 8px;
+      color: #12665c;
     }
 
-    .news {
-      border-bottom: 1px solid #ddd;
-      padding: 15px 0;
+    /* NEWS */
+
+    .news-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0;
     }
 
-    .news:last-child {
-      border-bottom: none;
+    .news-list {
+      display: grid;
+      gap: 14px;
     }
 
-    .news h3 {
-      margin-bottom: 5px;
+    .news-card {
+      background: #f7fafb;
+      border: 1px solid #e0e7ea;
+      border-radius: 12px;
+      padding: 18px;
+      transition: 0.2s;
     }
 
-    .news small {
+    .news-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .news-card h3 {
+      color: #123c56;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .news-card p {
+      color: #4b5660;
+      line-height: 1.5;
+    }
+
+    .news-card a {
+      display: inline-block;
+      margin-top: 12px;
+      color: #16756b;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .news-card a:hover {
+      text-decoration: underline;
+    }
+
+    .news-meta {
       color: #777;
+      font-size: 13px;
+      margin-bottom: 8px;
     }
 
-    select {
-      padding: 10px;
+    .loading {
+      text-align: center;
+      padding: 30px;
+      font-size: 18px;
+    }
+
+    .error {
+      background: #ffeaea;
+      color: #9b1c1c;
+      padding: 15px;
       border-radius: 8px;
-      border: 1px solid #bbb;
-      margin-top: 8px;
+      margin-top: 15px;
+    }
+
+    .source {
+      color: #667;
+      font-size: 13px;
+      margin-top: 12px;
     }
 
     footer {
-      background: #173b57;
+      background: #123c56;
       color: white;
       text-align: center;
-      padding: 25px;
-      margin-top: 30px;
+      padding: 28px;
+      margin-top: 20px;
     }
 
     @media (max-width: 600px) {
+
       header h1 {
-        font-size: 25px;
+        font-size: 26px;
+      }
+
+      .logo {
+        width: 110px;
+        height: 110px;
       }
 
       main {
-        padding: 15px;
+        padding: 12px;
       }
 
       .section {
         padding: 18px;
+      }
+
+      .chart-container {
+        height: 300px;
       }
     }
   </style>
@@ -199,149 +330,195 @@
 <body>
 
 <header>
-  <h1>🌍 Global Impact Tracker</h1>
-  <p>Tracking poverty, unemployment, resources and opportunities to help</p>
+
+  <img
+    src="logo.png"
+    alt="Global Impact Tracker logo"
+    class="logo"
+  >
+
+  <h1>Global Impact Tracker</h1>
+
+  <p>
+    Track poverty, unemployment and opportunities to create positive change.
+  </p>
+
 </header>
 
 <nav>
-  <button onclick="scrollToSection('dashboard')">Dashboard</button>
-  <button onclick="scrollToSection('poverty')">Poverty</button>
-  <button onclick="scrollToSection('unemployment')">Unemployment</button>
-  <button onclick="scrollToSection('help')">How We Can Help</button>
-  <button onclick="scrollToSection('news')">News</button>
+  <button onclick="goTo('dashboard')">Dashboard</button>
+  <button onclick="goTo('poverty')">Poverty</button>
+  <button onclick="goTo('unemployment')">Unemployment</button>
+  <button onclick="goTo('help')">How We Can Help</button>
+  <button onclick="goTo('news')">News</button>
 </nav>
 
 <main>
 
+  <div class="status">
+    <strong>🌍 Real-data dashboard</strong>
+
+    <p>
+      Poverty and unemployment statistics are retrieved
+      from the World Bank. News is retrieved from a live
+      global news database.
+    </p>
+  </div>
+
+
+  <!-- DASHBOARD -->
+
   <section id="dashboard" class="dashboard">
 
     <div class="card">
-      <h3>🌎 Poverty</h3>
-      <div class="number">Global Data</div>
-      <p>People affected by poverty</p>
+      <h3>🌍 Country</h3>
+      <div class="big-number" id="countryName">
+        World
+      </div>
+      <p>Currently selected</p>
+    </div>
+
+    <div class="card">
+      <h3>📉 Poverty</h3>
+      <div class="big-number" id="povertyNumber">
+        Loading...
+      </div>
+      <p>Latest available poverty rate</p>
     </div>
 
     <div class="card">
       <h3>👷 Unemployment</h3>
-      <div class="number">Global Data</div>
-      <p>People looking for work</p>
+      <div class="big-number" id="unemploymentNumber">
+        Loading...
+      </div>
+      <p>Latest available unemployment rate</p>
     </div>
 
     <div class="card">
-      <h3>📊 Tracking</h3>
-      <div class="number">Live Project</div>
-      <p>Data will be connected later</p>
-    </div>
-
-    <div class="card">
-      <h3>🤝 Action</h3>
-      <div class="number">Ways to Help</div>
-      <p>Explore practical solutions</p>
+      <h3>📅 Data Year</h3>
+      <div class="big-number" id="dataYear">
+        Loading...
+      </div>
+      <p>Latest available year</p>
     </div>
 
   </section>
+
+
+  <!-- POVERTY -->
 
   <section id="poverty" class="section">
 
     <h2>📈 Poverty Tracker</h2>
 
     <p>
-      Select a country to explore poverty data.
+      Select a country to view its available poverty
+      statistics and historical trend.
     </p>
 
-    <select id="countrySelect">
-      <option>Global</option>
-      <option>India</option>
-      <option>United States</option>
-      <option>Brazil</option>
-      <option>Nigeria</option>
-      <option>United Kingdom</option>
-    </select>
+    <div class="controls">
 
-    <div class="chart">
+      <select id="countrySelect">
 
-      <div class="bar" style="height: 75%;">
-        <span>2000</span>
+        <option value="WLD">🌎 World</option>
+        <option value="IND">🇮🇳 India</option>
+        <option value="USA">🇺🇸 United States</option>
+        <option value="BRA">🇧🇷 Brazil</option>
+        <option value="NGA">🇳🇬 Nigeria</option>
+        <option value="GBR">🇬🇧 United Kingdom</option>
+        <option value="CHN">🇨🇳 China</option>
+        <option value="ZAF">🇿🇦 South Africa</option>
+        <option value="BGD">🇧🇩 Bangladesh</option>
+        <option value="IDN">🇮🇩 Indonesia</option>
+
+      </select>
+
+    </div>
+
+    <div class="chart-container">
+
+      <canvas id="povertyChart"></canvas>
+
+    </div>
+
+    <div class="data-info">
+
+      <div class="data-box">
+        Latest poverty rate
+        <strong id="povertyLatest">Loading...</strong>
       </div>
 
-      <div class="bar" style="height: 68%;">
-        <span>2005</span>
+      <div class="data-box">
+        Latest year
+        <strong id="povertyYear">Loading...</strong>
       </div>
 
-      <div class="bar" style="height: 61%;">
-        <span>2010</span>
-      </div>
-
-      <div class="bar" style="height: 55%;">
-        <span>2015</span>
-      </div>
-
-      <div class="bar" style="height: 48%;">
-        <span>2020</span>
-      </div>
-
-      <div class="bar" style="height: 42%;">
-        <span>2025</span>
+      <div class="data-box">
+        Trend
+        <strong id="povertyTrend">Loading...</strong>
       </div>
 
     </div>
 
-    <p style="margin-top: 45px;">
-      ⚠️ The graph above is currently a demonstration.
-      We will replace it with real data from reliable international sources.
+    <p class="source">
+      Source: World Bank Open Data.
     </p>
 
   </section>
+
+
+  <!-- UNEMPLOYMENT -->
 
   <section id="unemployment" class="section">
 
     <h2>👷 Unemployment Tracker</h2>
 
     <p>
-      Track unemployment and compare changes between countries and years.
+      Historical unemployment data for the selected country.
     </p>
 
-    <div class="chart">
+    <div class="chart-container">
 
-      <div class="bar" style="height: 60%;">
-        <span>2000</span>
+      <canvas id="unemploymentChart"></canvas>
+
+    </div>
+
+    <div class="data-info">
+
+      <div class="data-box">
+        Latest unemployment rate
+        <strong id="unemploymentLatest">Loading...</strong>
       </div>
 
-      <div class="bar" style="height: 55%;">
-        <span>2005</span>
+      <div class="data-box">
+        Latest year
+        <strong id="unemploymentYear">Loading...</strong>
       </div>
 
-      <div class="bar" style="height: 50%;">
-        <span>2010</span>
-      </div>
-
-      <div class="bar" style="height: 57%;">
-        <span>2015</span>
-      </div>
-
-      <div class="bar" style="height: 65%;">
-        <span>2020</span>
-      </div>
-
-      <div class="bar" style="height: 52%;">
-        <span>2025</span>
+      <div class="data-box">
+        Trend
+        <strong id="unemploymentTrend">Loading...</strong>
       </div>
 
     </div>
 
-    <p style="margin-top: 45px;">
-      ⚠️ This is demonstration data for now.
+    <p class="source">
+      Source: World Bank Open Data.
     </p>
 
   </section>
+
+
+  <!-- HOW WE CAN HELP -->
 
   <section id="help" class="section">
 
     <h2>🤝 How Can We Help?</h2>
 
     <p>
-      Poverty is connected to many factors. Here are areas where
-      communities and organizations can make a difference.
+      Poverty is influenced by many connected factors.
+      Here are areas where communities, governments and
+      organizations can make a difference.
     </p>
 
     <div class="help-grid">
@@ -349,48 +526,48 @@
       <div class="help">
         <h3>📚 Education</h3>
         <p>
-          Support access to quality education, books, digital tools
-          and learning opportunities.
+          Support access to quality education,
+          learning materials and useful skills.
         </p>
       </div>
 
       <div class="help">
-        <h3>💼 Job Skills</h3>
+        <h3>💼 Employment</h3>
         <p>
-          Support training programs that help people develop useful
-          skills and find employment.
+          Job training and skills development can
+          help people access better opportunities.
         </p>
       </div>
 
       <div class="help">
         <h3>🏥 Healthcare</h3>
         <p>
-          Better access to healthcare can help families avoid
+          Better healthcare access can reduce
           financial hardship caused by illness.
         </p>
       </div>
 
       <div class="help">
-        <h3>🍎 Basic Resources</h3>
+        <h3>💧 Basic Resources</h3>
         <p>
-          Communities can support access to food, clean water,
-          sanitation and other essential resources.
+          Food, clean water, sanitation and
+          electricity are essential resources.
         </p>
       </div>
 
       <div class="help">
         <h3>🏗️ Infrastructure</h3>
         <p>
-          Roads, electricity, internet access and other infrastructure
-          can create opportunities for communities.
+          Roads, transportation, electricity and
+          internet can connect communities to opportunities.
         </p>
       </div>
 
       <div class="help">
         <h3>🌱 Sustainable Development</h3>
         <p>
-          Supporting sustainable projects can help communities build
-          long-term economic opportunities.
+          Long-term development can help communities
+          create lasting economic opportunities.
         </p>
       </div>
 
@@ -398,51 +575,1050 @@
 
   </section>
 
+
+  <!-- REAL NEWS -->
+
   <section id="news" class="section">
 
-    <h2>📰 Poverty & Employment News</h2>
+    <h2>📰 Latest Poverty & Employment News</h2>
 
-    <div class="news">
-      <h3>Global Poverty Updates</h3>
-      <p>
-        News from international organizations about poverty,
-        development and living conditions.
-      </p>
-      <small>News feed coming soon</small>
+    <p>
+      Recent articles related to poverty, unemployment,
+      jobs, development and economic opportunity.
+    </p>
+
+    <div class="news-controls">
+
+      <input
+        id="newsSearch"
+        type="text"
+        placeholder="Search news..."
+      >
+
+      <button
+        class="action"
+        onclick="loadNews()"
+      >
+        🔄 Refresh News
+      </button>
+
     </div>
 
-    <div class="news">
-      <h3>Employment Around the World</h3>
-      <p>
-        Updates about employment, unemployment and job opportunities.
-      </p>
-      <small>News feed coming soon</small>
+    <div id="newsList" class="news-list">
+
+      <div class="loading">
+        📰 Loading real news...
+      </div>
+
     </div>
 
-    <div class="news">
-      <h3>Development & Resources</h3>
-      <p>
-        Stories about programs working to improve access to resources.
-      </p>
-      <small>News feed coming soon</small>
-    </div>
+    <p class="source">
+      News provided through GDELT's global news database.
+      Always check the original article for the complete story.
+    </p>
 
   </section>
 
 </main>
 
+
 <footer>
-  <p>🌍 Global Impact Tracker</p>
-  <p>Built to understand global challenges and encourage positive action.</p>
+
+  <h3>🌍 Global Impact Tracker</h3>
+
+  <p>
+    Track Data | Understand | Create Change
+  </p>
+
+  <p style="margin-top:10px;font-size:13px;">
+    Statistics: World Bank Open Data
+  </p>
+
 </footer>
+
 
 <script>
 
-  function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({
-      behavior: "smooth"
-    });
+  /*
+  =====================================================
+  WORLD BANK DATA
+  =====================================================
+  */
+
+  const povertyIndicator = "SI.POV.DDAY";
+
+  const unemploymentIndicator = "SL.UEM.TOTL.ZS";
+
+  let povertyData = [];
+
+  let unemploymentData = [];
+
+
+  function goTo(id) {
+
+    document
+      .getElementById(id)
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
   }
+
+
+  async function getWorldBankData(country, indicator) {
+
+    const url =
+      "https://api.worldbank.org/v2/country/" +
+      country +
+      "/indicator/" +
+      indicator +
+      "?format=json&per_page=100";
+
+    const response =
+      await fetch(url);
+
+    if (!response.ok) {
+
+      throw new Error(
+        "World Bank connection failed."
+      );
+
+    }
+
+    const result =
+      await response.json();
+
+    if (!result[1]) {
+
+      return [];
+
+    }
+
+    return result[1]
+
+      .filter(item =>
+        item.value !== null
+      )
+
+      .map(item => ({
+
+        year: Number(item.date),
+
+        value: Number(item.value)
+
+      }))
+
+      .sort((a, b) =>
+        a.year - b.year
+      );
+
+  }
+
+
+  function formatPercent(value) {
+
+    if (
+      value === null ||
+      value === undefined
+    ) {
+
+      return "N/A";
+
+    }
+
+    return value.toFixed(2) + "%";
+
+  }
+
+
+  function latest(data) {
+
+    if (!data.length) {
+
+      return null;
+
+    }
+
+    return data[data.length - 1];
+
+  }
+
+
+  function getTrend(data) {
+
+    if (data.length < 2) {
+
+      return {
+        text: "Not enough data",
+        className: "trend-same"
+      };
+
+    }
+
+    const first =
+      data[
+        Math.max(0, data.length - 6)
+      ];
+
+    const last =
+      data[data.length - 1];
+
+
+    if (last.value < first.value) {
+
+      return {
+        text: "↓ Decreasing",
+        className: "trend-down"
+      };
+
+    }
+
+
+    if (last.value > first.value) {
+
+      return {
+        text: "↑ Increasing",
+        className: "trend-up"
+      };
+
+    }
+
+
+    return {
+      text: "→ Stable",
+      className: "trend-same"
+    };
+
+  }
+
+
+  function drawChart(
+    canvasId,
+    data,
+    title
+  ) {
+
+    const canvas =
+      document.getElementById(
+        canvasId
+      );
+
+    const ctx =
+      canvas.getContext("2d");
+
+    const width =
+      canvas.clientWidth;
+
+    const height =
+      canvas.clientHeight;
+
+    const ratio =
+      window.devicePixelRatio || 1;
+
+
+    canvas.width =
+      width * ratio;
+
+    canvas.height =
+      height * ratio;
+
+
+    ctx.scale(
+      ratio,
+      ratio
+    );
+
+
+    ctx.clearRect(
+      0,
+      0,
+      width,
+      height
+    );
+
+
+    if (!data.length) {
+
+      ctx.font =
+        "16px Arial";
+
+      ctx.fillText(
+        "No data available.",
+        30,
+        50
+      );
+
+      return;
+
+    }
+
+
+    const padding = 45;
+
+    const chartWidth =
+      width - padding * 2;
+
+    const chartHeight =
+      height - padding * 2;
+
+
+    const values =
+      data.map(
+        item => item.value
+      );
+
+
+    const min =
+      Math.min(...values);
+
+    const max =
+      Math.max(...values);
+
+    const range =
+      max - min || 1;
+
+
+    ctx.strokeStyle =
+      "#d9e2e7";
+
+    ctx.lineWidth = 1;
+
+
+    for (
+      let i = 0;
+      i <= 5;
+      i++
+    ) {
+
+      const y =
+        padding +
+        (chartHeight / 5) * i;
+
+
+      ctx.beginPath();
+
+      ctx.moveTo(
+        padding,
+        y
+      );
+
+      ctx.lineTo(
+        width - padding,
+        y
+      );
+
+      ctx.stroke();
+
+    }
+
+
+    ctx.beginPath();
+
+
+    data.forEach(
+      (item, index) => {
+
+        const x =
+          padding +
+          (
+            index /
+            Math.max(
+              1,
+              data.length - 1
+            )
+          ) *
+          chartWidth;
+
+
+        const y =
+          padding +
+          chartHeight -
+          (
+            (item.value - min) /
+            range
+          ) *
+          chartHeight;
+
+
+        if (index === 0) {
+
+          ctx.moveTo(
+            x,
+            y
+          );
+
+        } else {
+
+          ctx.lineTo(
+            x,
+            y
+          );
+
+        }
+
+      }
+    );
+
+
+    ctx.strokeStyle =
+      "#16756b";
+
+    ctx.lineWidth = 3;
+
+    ctx.stroke();
+
+
+    data.forEach(
+      (item, index) => {
+
+        const x =
+          padding +
+          (
+            index /
+            Math.max(
+              1,
+              data.length - 1
+            )
+          ) *
+          chartWidth;
+
+
+        const y =
+          padding +
+          chartHeight -
+          (
+            (item.value - min) /
+            range
+          ) *
+          chartHeight;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+          x,
+          y,
+          4,
+          0,
+          Math.PI * 2
+        );
+
+
+        ctx.fillStyle =
+          "#16756b";
+
+        ctx.fill();
+
+      }
+    );
+
+
+    ctx.fillStyle =
+      "#555";
+
+    ctx.font =
+      "12px Arial";
+
+
+    const step =
+      Math.max(
+        1,
+        Math.floor(
+          data.length / 6
+        )
+      );
+
+
+    data.forEach(
+      (item, index) => {
+
+        if (
+          index % step === 0 ||
+          index === data.length - 1
+        ) {
+
+          const x =
+            padding +
+            (
+              index /
+              Math.max(
+                1,
+                data.length - 1
+              )
+            ) *
+            chartWidth;
+
+
+          ctx.fillText(
+            item.year,
+            x - 15,
+            height - 15
+          );
+
+        }
+
+      }
+    );
+
+
+    ctx.font =
+      "bold 14px Arial";
+
+    ctx.fillStyle =
+      "#123c56";
+
+    ctx.fillText(
+      title,
+      padding,
+      22
+    );
+
+  }
+
+
+  async function loadData(country) {
+
+    document.getElementById(
+      "povertyNumber"
+    ).textContent =
+      "Loading...";
+
+
+    document.getElementById(
+      "unemploymentNumber"
+    ).textContent =
+      "Loading...";
+
+
+    try {
+
+      const results =
+        await Promise.all([
+
+          getWorldBankData(
+            country,
+            povertyIndicator
+          ),
+
+          getWorldBankData(
+            country,
+            unemploymentIndicator
+          )
+
+        ]);
+
+
+      povertyData =
+        results[0];
+
+      unemploymentData =
+        results[1];
+
+
+      updateDashboard();
+
+
+      drawChart(
+        "povertyChart",
+        povertyData,
+        "Poverty rate (%)"
+      );
+
+
+      drawChart(
+        "unemploymentChart",
+        unemploymentData,
+        "Unemployment rate (%)"
+      );
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      document.getElementById(
+        "povertyNumber"
+      ).textContent =
+        "Error";
+
+      document.getElementById(
+        "unemploymentNumber"
+      ).textContent =
+        "Error";
+
+    }
+
+  }
+
+
+  function updateDashboard() {
+
+    const poverty =
+      latest(povertyData);
+
+    const unemployment =
+      latest(unemploymentData);
+
+
+    const select =
+      document.getElementById(
+        "countrySelect"
+      );
+
+
+    const countryText =
+      select.options[
+        select.selectedIndex
+      ].text;
+
+
+    document.getElementById(
+      "countryName"
+    ).textContent =
+      countryText;
+
+
+    if (poverty) {
+
+      document.getElementById(
+        "povertyNumber"
+      ).textContent =
+        formatPercent(
+          poverty.value
+        );
+
+
+      document.getElementById(
+        "povertyLatest"
+      ).textContent =
+        formatPercent(
+          poverty.value
+        );
+
+
+      document.getElementById(
+        "povertyYear"
+      ).textContent =
+        poverty.year;
+
+    } else {
+
+      document.getElementById(
+        "povertyNumber"
+      ).textContent =
+        "N/A";
+
+
+      document.getElementById(
+        "povertyLatest"
+      ).textContent =
+        "N/A";
+
+
+      document.getElementById(
+        "povertyYear"
+      ).textContent =
+        "N/A";
+
+    }
+
+
+    if (unemployment) {
+
+      document.getElementById(
+        "unemploymentNumber"
+      ).textContent =
+        formatPercent(
+          unemployment.value
+        );
+
+
+      document.getElementById(
+        "unemploymentLatest"
+      ).textContent =
+        formatPercent(
+          unemployment.value
+        );
+
+
+      document.getElementById(
+        "unemploymentYear"
+      ).textContent =
+        unemployment.year;
+
+    } else {
+
+      document.getElementById(
+        "unemploymentNumber"
+      ).textContent =
+        "N/A";
+
+
+      document.getElementById(
+        "unemploymentLatest"
+      ).textContent =
+        "N/A";
+
+
+      document.getElementById(
+        "unemploymentYear"
+      ).textContent =
+        "N/A";
+
+    }
+
+
+    const years = [
+
+      poverty
+        ? poverty.year
+        : 0,
+
+      unemployment
+        ? unemployment.year
+        : 0
+
+    ].filter(
+      year => year > 0
+    );
+
+
+    document.getElementById(
+      "dataYear"
+    ).textContent =
+      years.length
+        ? Math.max(...years)
+        : "N/A";
+
+
+    updateTrend(
+      "povertyTrend",
+      povertyData
+    );
+
+
+    updateTrend(
+      "unemploymentTrend",
+      unemploymentData
+    );
+
+  }
+
+
+  function updateTrend(
+    id,
+    data
+  ) {
+
+    const element =
+      document.getElementById(id);
+
+    const trend =
+      getTrend(data);
+
+
+    element.textContent =
+      trend.text;
+
+    element.className =
+      trend.className;
+
+  }
+
+
+  document
+    .getElementById(
+      "countrySelect"
+    )
+    .addEventListener(
+      "change",
+      function () {
+
+        loadData(
+          this.value
+        );
+
+      }
+    );
+
+
+  window.addEventListener(
+    "resize",
+    function () {
+
+      drawChart(
+        "povertyChart",
+        povertyData,
+        "Poverty rate (%)"
+      );
+
+
+      drawChart(
+        "unemploymentChart",
+        unemploymentData,
+        "Unemployment rate (%)"
+      );
+
+    }
+  );
+
+
+  /*
+  =====================================================
+  LIVE NEWS
+  =====================================================
+
+  GDELT searches news articles from around the world.
+  We request recent articles related to poverty,
+  unemployment and development.
+  */
+
+  async function loadNews() {
+
+    const newsList =
+      document.getElementById(
+        "newsList"
+      );
+
+
+    newsList.innerHTML =
+      '<div class="loading">📰 Loading real news...</div>';
+
+
+    const searchBox =
+      document.getElementById(
+        "newsSearch"
+      );
+
+
+    const searchText =
+      searchBox.value.trim();
+
+
+    let query =
+      searchText
+        ? searchText
+        : "poverty OR unemployment OR development OR jobs";
+
+
+    try {
+
+      const url =
+        "https://api.gdeltproject.org/api/v2/doc/doc"
+        + "?query="
+        + encodeURIComponent(query)
+        + "&mode=artlist"
+        + "&maxrecords=10"
+        + "&format=json"
+        + "&sort=HybridRel";
+
+
+
+      const response =
+        await fetch(url);
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "News service unavailable."
+        );
+
+      }
+
+
+      const data =
+        await response.json();
+
+
+      if (
+        !data.articles ||
+        !data.articles.length
+      ) {
+
+        newsList.innerHTML =
+          '<div class="loading">No recent articles found. Try another search.</div>';
+
+        return;
+
+      }
+
+
+      newsList.innerHTML = "";
+
+
+      data.articles.forEach(
+        article => {
+
+          const card =
+            document.createElement(
+              "article"
+            );
+
+
+          card.className =
+            "news-card";
+
+
+          const title =
+            document.createElement(
+              "h3"
+            );
+
+
+          title.textContent =
+            article.title ||
+            "Untitled article";
+
+
+          const meta =
+            document.createElement(
+              "div"
+            );
+
+
+          meta.className =
+            "news-meta";
+
+
+          const source =
+            article.domain ||
+            "News source";
+
+
+          let dateText =
+            "";
+
+
+          if (article.seendate) {
+
+            const date =
+              new Date(
+                article.seendate
+              );
+
+
+            if (
+              !isNaN(
+                date.getTime()
+              )
+            ) {
+
+              dateText =
+                date.toLocaleString();
+
+            }
+
+          }
+
+
+          meta.textContent =
+            source +
+            (
+              dateText
+                ? " • " + dateText
+                : ""
+            );
+
+
+          const description =
+            document.createElement(
+              "p"
+            );
+
+
+          description.textContent =
+            "Read the original article for the full story and context.";
+
+
+          const link =
+            document.createElement(
+              "a"
+            );
+
+
+          link.href =
+            article.url;
+
+
+          link.target =
+            "_blank";
+
+
+          link.rel =
+            "noopener noreferrer";
+
+
+          link.textContent =
+            "Read original article →";
+
+
+          card.appendChild(
+            title
+          );
+
+
+          card.appendChild(
+            meta
+          );
+
+
+          card.appendChild(
+            description
+          );
+
+
+          card.appendChild(
+            link
+          );
+
+
+          newsList.appendChild(
+            card
+          );
+
+        }
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "News error:",
+        error
+      );
+
+
+      newsList.innerHTML = `
+
+        <div class="error">
+
+          <strong>
+            ⚠️ Couldn't load the live news feed.
+          </strong>
+
+          <p style="margin-top:6px;">
+            Check your internet connection and
+            try the Refresh News button again.
+          </p>
+
+        </div>
+
+      `;
+
+    }
+
+  }
+
+
+  /*
+  Start everything
+  */
+
+  loadData("WLD");
+
+  loadNews();
+
 
 </script>
 
