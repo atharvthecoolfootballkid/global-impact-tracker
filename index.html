@@ -5,12 +5,21 @@
 
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>Global Impact Tracker</title>
+
+  <!-- APP / HOME-SCREEN ICON -->
+  <link rel="icon"
+        type="image/png"
+        href="./logo.png">
+
+  <link rel="apple-touch-icon"
+        href="./logo.png">
+
+  <meta name="theme-color"
+        content="#123c56">
 
 
   <style>
@@ -22,12 +31,10 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-
     body {
       background: #f3f7fa;
       color: #172033;
     }
-
 
     header {
       background: linear-gradient(
@@ -41,27 +48,24 @@
       padding: 30px 20px;
     }
 
-
+    /* LOGO INSIDE THE APP */
     .logo {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       object-fit: contain;
       display: block;
       margin: 0 auto 15px auto;
-      border-radius: 20px;
+      border-radius: 25px;
     }
-
 
     header h1 {
       font-size: 34px;
       margin-bottom: 8px;
     }
 
-
     header p {
       font-size: 16px;
     }
-
 
     nav {
       background: white;
@@ -70,9 +74,11 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
 
+      box-shadow:
+        0 2px 10px
+        rgba(0,0,0,0.1);
+    }
 
     nav button {
       border: none;
@@ -84,18 +90,15 @@
       font-size: 15px;
     }
 
-
     nav button:hover {
       background: #e5f1f4;
     }
-
 
     main {
       max-width: 1200px;
       margin: auto;
       padding: 25px;
     }
-
 
     .status {
       background: #fff8df;
@@ -105,9 +108,9 @@
       border-radius: 8px;
     }
 
-
     .dashboard {
       display: grid;
+
       grid-template-columns:
         repeat(
           auto-fit,
@@ -117,7 +120,6 @@
       gap: 18px;
       margin-bottom: 25px;
     }
-
 
     .card {
       background: white;
@@ -129,12 +131,10 @@
         rgba(0,0,0,0.08);
     }
 
-
     .card h3 {
       color: #356077;
       margin-bottom: 12px;
     }
-
 
     .big-number {
       font-size: 30px;
@@ -142,7 +142,6 @@
       color: #123c56;
       margin-bottom: 6px;
     }
-
 
     .section {
       background: white;
@@ -155,12 +154,10 @@
         rgba(0,0,0,0.08);
     }
 
-
     .section h2 {
       color: #123c56;
       margin-bottom: 12px;
     }
-
 
     .controls {
       display: flex;
@@ -168,7 +165,6 @@
       flex-wrap: wrap;
       margin: 18px 0;
     }
-
 
     select {
       padding: 11px;
@@ -178,7 +174,6 @@
       font-size: 15px;
     }
 
-
     .chart-container {
       width: 100%;
       height: 360px;
@@ -186,12 +181,10 @@
       overflow-x: auto;
     }
 
-
     canvas {
       width: 100%;
       height: 100%;
     }
-
 
     .data-info {
       display: grid;
@@ -206,13 +199,11 @@
       margin-top: 18px;
     }
 
-
     .data-box {
       background: #eef6f8;
       padding: 16px;
       border-radius: 10px;
     }
-
 
     .data-box strong {
       display: block;
@@ -221,24 +212,20 @@
       margin-top: 5px;
     }
 
-
     .trend-up {
       color: #b3261e;
       font-weight: bold;
     }
-
 
     .trend-down {
       color: #188038;
       font-weight: bold;
     }
 
-
     .trend-same {
       color: #777;
       font-weight: bold;
     }
-
 
     .help-grid {
       display: grid;
@@ -253,26 +240,22 @@
       margin-top: 18px;
     }
 
-
     .help {
       background: #edf7f4;
       padding: 20px;
       border-radius: 12px;
     }
 
-
     .help h3 {
       margin-bottom: 8px;
       color: #12665c;
     }
-
 
     .source {
       color: #667;
       font-size: 13px;
       margin-top: 12px;
     }
-
 
     footer {
       background: #123c56;
@@ -282,34 +265,28 @@
       margin-top: 20px;
     }
 
-
     @media (max-width: 600px) {
 
       header h1 {
         font-size: 26px;
       }
 
-
       .logo {
         width: 110px;
         height: 110px;
       }
 
-
       main {
         padding: 12px;
       }
-
 
       .section {
         padding: 18px;
       }
 
-
       .chart-container {
         height: 300px;
       }
-
     }
 
   </style>
@@ -320,10 +297,11 @@
 <body>
 
 
-  <!-- HEADER -->
+  <!-- APP HEADER -->
 
   <header>
 
+    <!-- YOUR LOGO INSIDE THE APP -->
     <img
       src="./logo.png"
       alt="Global Impact Tracker logo"
@@ -346,30 +324,19 @@
 
   <nav>
 
-    <button
-      onclick="goTo('dashboard')"
-    >
+    <button onclick="goTo('dashboard')">
       Dashboard
     </button>
 
-
-    <button
-      onclick="goTo('poverty')"
-    >
+    <button onclick="goTo('poverty')">
       Poverty
     </button>
 
-
-    <button
-      onclick="goTo('unemployment')"
-    >
+    <button onclick="goTo('unemployment')">
       Unemployment
     </button>
 
-
-    <button
-      onclick="goTo('help')"
-    >
+    <button onclick="goTo('help')">
       How We Can Help
     </button>
 
@@ -402,7 +369,6 @@
       id="dashboard"
       class="dashboard"
     >
-
 
       <div class="card">
 
@@ -483,7 +449,6 @@
 
       </div>
 
-
     </section>
 
 
@@ -506,9 +471,7 @@
 
       <div class="controls">
 
-        <select
-          id="countrySelect"
-        >
+        <select id="countrySelect">
 
           <option value="WLD">
             🌎 World
@@ -557,23 +520,18 @@
 
       <div class="chart-container">
 
-        <canvas
-          id="povertyChart"
-        ></canvas>
+        <canvas id="povertyChart"></canvas>
 
       </div>
 
 
       <div class="data-info">
 
-
         <div class="data-box">
 
           Latest poverty rate
 
-          <strong
-            id="povertyLatest"
-          >
+          <strong id="povertyLatest">
             Loading...
           </strong>
 
@@ -584,9 +542,7 @@
 
           Latest year
 
-          <strong
-            id="povertyYear"
-          >
+          <strong id="povertyYear">
             Loading...
           </strong>
 
@@ -597,14 +553,11 @@
 
           Trend
 
-          <strong
-            id="povertyTrend"
-          >
+          <strong id="povertyTrend">
             Loading...
           </strong>
 
         </div>
-
 
       </div>
 
@@ -635,23 +588,18 @@
 
       <div class="chart-container">
 
-        <canvas
-          id="unemploymentChart"
-        ></canvas>
+        <canvas id="unemploymentChart"></canvas>
 
       </div>
 
 
       <div class="data-info">
 
-
         <div class="data-box">
 
           Latest unemployment rate
 
-          <strong
-            id="unemploymentLatest"
-          >
+          <strong id="unemploymentLatest">
             Loading...
           </strong>
 
@@ -662,9 +610,7 @@
 
           Latest year
 
-          <strong
-            id="unemploymentYear"
-          >
+          <strong id="unemploymentYear">
             Loading...
           </strong>
 
@@ -675,14 +621,11 @@
 
           Trend
 
-          <strong
-            id="unemploymentTrend"
-          >
+          <strong id="unemploymentTrend">
             Loading...
           </strong>
 
         </div>
-
 
       </div>
 
@@ -802,11 +745,9 @@
 
         </div>
 
-
       </div>
 
     </section>
-
 
   </main>
 
@@ -833,7 +774,6 @@
 
 
   <script>
-
 
     /* WORLD BANK INDICATORS */
 
@@ -862,7 +802,7 @@
     }
 
 
-    /* GET WORLD BANK DATA */
+    /* WORLD BANK DATA */
 
     async function getWorldBankData(
       country,
@@ -921,14 +861,14 @@
         )
 
         .sort(
-          (a, b) =>
+          (a,b) =>
             a.year - b.year
         );
 
     }
 
 
-    /* FORMAT PERCENT */
+    /* FORMAT */
 
     function formatPercent(value) {
 
@@ -942,15 +882,12 @@
       }
 
 
-      return (
-        value.toFixed(2) +
-        "%"
-      );
+      return value.toFixed(2) + "%";
 
     }
 
 
-    /* LATEST VALUE */
+    /* LATEST */
 
     function latest(data) {
 
@@ -975,13 +912,8 @@
       if (data.length < 2) {
 
         return {
-
-          text:
-            "Not enough data",
-
-          className:
-            "trend-same"
-
+          text: "Not enough data",
+          className: "trend-same"
         };
 
       }
@@ -1008,13 +940,8 @@
       ) {
 
         return {
-
-          text:
-            "↓ Decreasing",
-
-          className:
-            "trend-down"
-
+          text: "↓ Decreasing",
+          className: "trend-down"
         };
 
       }
@@ -1026,26 +953,16 @@
       ) {
 
         return {
-
-          text:
-            "↑ Increasing",
-
-          className:
-            "trend-up"
-
+          text: "↑ Increasing",
+          className: "trend-up"
         };
 
       }
 
 
       return {
-
-        text:
-          "→ Stable",
-
-        className:
-          "trend-same"
-
+        text: "→ Stable",
+        className: "trend-same"
       };
 
     }
@@ -1066,9 +983,7 @@
 
 
       const ctx =
-        canvas.getContext(
-          "2d"
-        );
+        canvas.getContext("2d");
 
 
       const width =
@@ -1080,8 +995,7 @@
 
 
       const ratio =
-        window.devicePixelRatio ||
-        1;
+        window.devicePixelRatio || 1;
 
 
       canvas.width =
@@ -1173,9 +1087,7 @@
 
         const y =
           padding +
-          (
-            chartHeight / 5
-          ) * i;
+          (chartHeight / 5) * i;
 
 
         ctx.beginPath();
@@ -1198,13 +1110,13 @@
       }
 
 
-      /* GRAPH LINE */
+      /* LINE */
 
       ctx.beginPath();
 
 
       data.forEach(
-        (item, index) => {
+        (item,index) => {
 
           const x =
             padding +
@@ -1261,10 +1173,10 @@
       ctx.stroke();
 
 
-      /* GRAPH POINTS */
+      /* POINTS */
 
       data.forEach(
-        (item, index) => {
+        (item,index) => {
 
           const x =
             padding +
@@ -1333,7 +1245,7 @@
 
 
       data.forEach(
-        (item, index) => {
+        (item,index) => {
 
           if (
             index % step === 0 ||
@@ -1451,11 +1363,9 @@
         );
 
 
-      } catch (error) {
+      } catch(error) {
 
-        console.error(
-          error
-        );
+        console.error(error);
 
 
         document.getElementById(
@@ -1608,7 +1518,7 @@
       }
 
 
-      /* DATA YEAR */
+      /* YEAR */
 
       const years = [
 
@@ -1677,7 +1587,7 @@
     }
 
 
-    /* COUNTRY SELECTOR */
+    /* COUNTRY CHANGE */
 
     document
       .getElementById(
@@ -1685,7 +1595,7 @@
       )
       .addEventListener(
         "change",
-        function () {
+        function() {
 
           loadData(
             this.value
@@ -1695,11 +1605,11 @@
       );
 
 
-    /* RESIZE GRAPHS */
+    /* RESIZE */
 
     window.addEventListener(
       "resize",
-      function () {
+      function() {
 
         drawChart(
           "povertyChart",
@@ -1718,10 +1628,9 @@
     );
 
 
-    /* START APP */
+    /* START */
 
     loadData("WLD");
-
 
   </script>
 
